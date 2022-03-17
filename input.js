@@ -1,4 +1,8 @@
-const setupInput = function () {
+// Stores the active TCP connection object.
+let connection;
+
+const setupInput = function (conn) {
+    connection = conn;
     const stdin = process.stdin;
     stdin.setRawMode(true);
     stdin.setEncoding("utf8");
@@ -8,13 +12,27 @@ const setupInput = function () {
 };
 
 const handleUserInput = function (input) {
-    
-    if(input === "w"){
+   
+    const move = (movement)=>{
+
         setTimeout(()=>{
-            this.write("Move: up")
-        }, 50);
-    } else{
-        return
+            connection.write(`Move: ${movement}`)
+         }, 10);
+    }
+
+    switch(input){
+        case "w":
+            move("up");
+            break;
+        case "a":
+            move("left");
+            break;
+        case "s":
+            move("down");
+            break;
+        case "d":
+            move("right");
+            break;
     }
 
 };

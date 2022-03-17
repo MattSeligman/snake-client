@@ -16,8 +16,11 @@ const connect = function () {
 
     conn.on("connect",()=>{
         console.log("Successfully connected to game server");
-        conn.write("Name: ^-^")
- 
+        conn.write("Name: ^-^") 
+    })
+
+    conn.on("error",()=>{
+        console.log("Event has crashed"); 
     })
     
     console.log("Connecting ...");
