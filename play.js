@@ -1,5 +1,9 @@
 // require functions / game commands from play
-const client = require("./client");
+const { connect } = require("./client");
+const { setupInput } = require("./input");
 
 // establishes a connection with the game server
-client.connect()
+connect()
+
+// establish the input
+setupInput();

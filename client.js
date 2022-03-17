@@ -9,33 +9,6 @@ const connect = function () {
   
     // interpret incoming data as text
     conn.setEncoding("utf8");
-
-    const movement = (input)=> {
-
-        switch(input){
-            case "w":
-                setInterval(()=>{
-                    conn.write("Move: up")
-                }, 50);
-            break;
-            case "a":
-                setInterval(()=>{
-                    conn.write("Move: left")
-                }, 50);
-            break;
-            case "s":
-                setInterval(()=>{
-                    conn.write("Move: down")
-                }, 50);
-            break;
-            case "d":
-                setInterval(()=>{
-                    conn.write("Move: right")
-                }, 50);
-            break;
-        }
-    }
-
   
     conn.on("data",(data)=>{
         console.log("Response from Server:", data)
@@ -45,7 +18,6 @@ const connect = function () {
         console.log("Successfully connected to game server");
         conn.write("Name: ^-^")
  
-        
     })
     
     console.log("Connecting ...");
@@ -53,6 +25,5 @@ const connect = function () {
 };
 
 module.exports = {
-    connect: connect,
-    message: "Yo"
+    connect
 }
