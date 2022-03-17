@@ -13,11 +13,10 @@ const setupInput = function (conn) {
 
 const handleUserInput = function (input) {
    
-    const move = (movement)=>{
+    const say = (comment)=>{ setTimeout(()=> connection.write(`Say: ${comment}`), 25); }
 
-        setTimeout(()=>{
-            connection.write(`Move: ${movement}`)
-         }, 10);
+    const move = (movement)=>{
+        setTimeout(()=> connection.write(`Move: ${movement}`), 25);
     }
 
     switch(input){
@@ -32,6 +31,23 @@ const handleUserInput = function (input) {
             break;
         case "d":
             move("right");
+            break;
+        
+            // fun words
+        case "e":
+            say("Ahhhh")
+            break;
+
+        case "o":
+            say("Wooaa")
+            break;
+
+        case "r":
+            say("close one!")
+            break;
+
+        case "t":
+            say("beep beep")
             break;
     }
 
